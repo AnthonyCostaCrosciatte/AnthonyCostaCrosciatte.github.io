@@ -1,69 +1,126 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Home</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .gallery-container {
+            position: relative;
+            display: flex;
+            overflow: hidden;
+        }
 
-		<script src="https://dfilittobot.herokuapp.com/assets/modules/channel-web/inject.js"></script>
-     
-    </head>
-    <body>
-        <header>
-            <div class="container">
-                <a href="https://AnthonyCostaCrosciatte.github.io" class="branch"><img src="./img/logo.webp" alt="Minha logo" title="Nome da minha logo"></a>
-                <nav class="menu">
-                    <ul>
-                        <li><a class="menu-link" href="index.html">Início</a></li>
-                        <li><a class="menu-link" href="portfolio.html">Portfólio</a></li>
-                        <li><a class="menu-link" href="contato.html">Contato</a></li>
-                    </ul>
-                </nav>
+        .gallery {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
+
+        .card-button a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .youtube-icon {
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="https://AnthonyCostaCrosciatte.github.io" class="branch">
+                <img src="./img/logo.webp" alt="Minha logo" title="Nome da minha logo">
+            </a>
+            <nav class="menu">
+                <ul>
+                    <li><a class="menu-link" href="index.html">Início</a></li>
+                    <li><a class="menu-link" href="portfolio.html">Portfólio</a></li>
+                    <li><a class="menu-link" href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <div class="gallery-container">
+            <button class="arrow arrow-left">&#9664;</button>
+            <div class="gallery">
+                <section class="card">
+                    <div class="card-img">
+                        <div class="img-body"><img src="./img/port1.png" alt="Portfólio 1"></div>
+                    </div>
+                    <div class="card-body">
+                        <p>Bem-vindo ao meu Portfólio!</p>
+                        <p>Este site é demonstrativo e pretendo aprimorá-lo futuramente.</p>
+                    </div>
+                    <div class="card-button">
+                        <a class="youtube-icon" href="https://www.youtube.com/@thonymarth5743" target="_blank">Saiba mais</a>
+                    </div>
+                </section>
+                
+                <section class="card">
+                    <div class="card-img">
+                        <div class="img-body"><img src="./img/port2.jpg" alt="Sorteador de Números"></div>
+                    </div>
+                    <div class="card-body">
+                        <p>Sorteador de Números</p>
+                        <p>Um site para sortear números aleatórios.</p>
+                    </div>
+                    <div class="card-button">
+                        <a href="./portfolio/sorteador/index.html" target="_blank">Saiba mais</a>
+                    </div>
+                </section>
             </div>
-        </header>
+            <button class="arrow arrow-right">&#9654;</button>
+        </div>
+    </main>
+    <script>
+        $(document).ready(function() {
+            let index = 0;
+            const cardWidth = $('.card').outerWidth(true);
+            const totalCards = $('.gallery .card').length;
 
-        <main class="container">
-            <section class="card">
-                <div class="card-img">
-                    <div class="img-body"><img src="./img/port1.png" alt="Portfólio 1" title="Portfólio 1"></div>
-                </div>
-        
-                <div class="card-body">
-                    <p>
-                        Bem vindo ao meu Portifólio!
-                    </p>
-                    <p>
-                       Este site AnthonyCostaCrosciatte.github é apenas um site demonstrativo para que fala e comento sobre mim.
-                       Pretendo utiliza-lo e aprimora-lo futuramente.
-                </div>
-        
-                <div class="card-button">
-                    <a href="https://www.youtube.com/@thonymarth5743" target="_blank">Saiba mais</a>
-                </div>
-            </section>
-        
-            <section class="card">
-                <div class="card-img">
-                    <div class="img-body"><img src="./img/port2.jpg" alt="Portfólio 2" title="Portfólio 2"></div>
-                </div>
-        
-                <div class="card-body">
-                    <p>
-                        Sorteador de números
-                    </p>
-                    <p>
-                        Site que visa sortear um ou mais números para o usuário
-                     </p>
-                </div>
-        
-                <div class="card-button">
-                    <a href="./portfolio/sorteador/index.html" target="_blank">Saiba mais</a>
-                </div>
-            </section>
-        </main>
-    </body>
+            $('.arrow-right').click(function() {
+                if (index < totalCards - 1) {
+                    index++;
+                    $('.gallery').css('transform', `translateX(${-index * cardWidth}px)`);
+                }
+            });
+
+            $('.arrow-left').click(function() {
+                if (index > 0) {
+                    index--;
+                    $('.gallery').css('transform', `translateX(${-index * cardWidth}px)`);
+                }
+            });
+        });
+    </script>
+</body>
 </html>
+
